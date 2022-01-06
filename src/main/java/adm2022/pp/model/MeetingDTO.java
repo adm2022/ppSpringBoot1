@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GamesDTO {
+public class MeetingDTO {
 
     private Long id;
 
@@ -16,6 +16,6 @@ public class GamesDTO {
     @Size(max = 255)
     private String name;
 
-    private Long gameStories;
+    private Long meetingStories;
 
 }

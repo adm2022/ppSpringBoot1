@@ -1,12 +1,13 @@
 package adm2022.pp.domain;
 
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Stories {
+public class Meeting {
 
     @Id
     @Column(nullable = false, updatable = false)
@@ -32,15 +33,10 @@ public class Stories {
     private Long id;
 
     @Column(nullable = false)
-    private String summary;
+    private String name;
 
-    @Column(columnDefinition = "clob")
-    private String description;
-
-    @Column
-    private Integer points;
-
-    @OneToMany(mappedBy = "gameStories")
-    private Set<Games> gameStoriesGamess;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "meeting_stories_id")
+    private Story meetingStories;
 
 }

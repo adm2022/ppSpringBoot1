@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StoriesDTO {
+public class StoryDTO {
 
     private Long id;
 
