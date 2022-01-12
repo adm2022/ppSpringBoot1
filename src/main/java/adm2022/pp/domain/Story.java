@@ -1,6 +1,7 @@
 package adm2022.pp.domain;
 
 import java.util.Set;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,10 @@ import lombok.Setter;
 @Setter
 public class Story {
 
+    // Let us add a constructor here
+    public Story() {
+        dateCreation = new Date();
+    }
     @Id
     @Column(nullable = false, updatable = false)
     @SequenceGenerator(
@@ -33,7 +38,8 @@ public class Story {
 
     @Column(nullable = false)
     private String summary;
-
+    @Column(nullable = false)
+    private Date dateCreation;
     @Column(columnDefinition = "clob")
     private String description;
 
