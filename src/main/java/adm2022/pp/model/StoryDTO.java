@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Date;
 
 
 @Getter
@@ -15,6 +16,8 @@ public class StoryDTO {
     @NotNull
     @Size(max = 255)
     private String summary;
+
+    private Date dateCreation;
 
     private String description;
 
