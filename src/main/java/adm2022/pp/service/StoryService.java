@@ -53,6 +53,7 @@ public class StoryService {
         storyDTO.setId(story.getId());
         storyDTO.setSummary(story.getSummary());
         storyDTO.setDescription(story.getDescription());
+        storyDTO.setDateCreation(story.getDateCreation());
         storyDTO.setPoints(story.getPoints());
         return storyDTO;
     }
@@ -60,6 +61,7 @@ public class StoryService {
     private Story mapToEntity(final StoryDTO storyDTO, final Story story) {
         story.setSummary(storyDTO.getSummary());
         story.setDescription(storyDTO.getDescription());
+        story.setDateCreation(storyDTO.getDateCreation());
         story.setPoints(storyDTO.getPoints());
         return story;
     }
