@@ -13,3 +13,19 @@
 1. Use github issues to track TODO items
 2. Fill out this README.md more
 3. Angular front end
+
+# Testing
+
+```
+
+digraph G {
+    
+    fontsize="70"
+    
+    {rank=same; person nginx spring_boot database }
+	person -> nginx -> spring_boot -> database;
+	
+	
+	rest_tests -> spring_boot;
+}
+```
