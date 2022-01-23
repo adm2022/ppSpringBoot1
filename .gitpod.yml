@@ -3,6 +3,7 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
+  - sdk install java 17.0.2.8.1-amzn     
   - init: ./gradlew build
 vscode:
   extensions:
