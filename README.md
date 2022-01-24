@@ -8,6 +8,7 @@
 
 1. Jump started with https://bootify.io/app/UGEIGGPAOLKH
 2. In code bases like this, you'll need to remember https://youtu.be/vaqsujQW8T0
+3. https://www.pointingpoker.com/ is inspirational.
 
 # TODOs
 1. Use github issues to track TODO items
