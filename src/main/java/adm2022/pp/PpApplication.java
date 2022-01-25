@@ -12,13 +12,13 @@ import adm2022.pp.model.*;
 
 @SpringBootApplication
 public class PpApplication implements CommandLineRunner {
-
-
-    // @Autowired
-    // private final StoryRepository storyRepository;
-
-    @Autowired
     private final StoryService storyService;
+    private final MeetingService meetingService;
+
+    public PpApplication(StoryService storyService, MeetingService meetingService) {
+        this.storyService = storyService;
+        this.meetingService = meetingService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(PpApplication.class, args);
@@ -27,6 +27,14 @@ public class PpApplication implements CommandLineRunner {
     public void run(String... args) {
         System.out.println("Hi from CommandLineRunnger!");
         this.storyService.create(buildStoryDTO("Demo Story",new java.util.Date(), "Demo Description", 3));
+        this.storyService.create(buildStoryDTO("Crazy Story",new java.util.Date(), "Do all the things and make billions", 13));
+        this.meetingService.create(buildMeetingDTO("Kickoff meeting"));
+    }
+
+    private MeetingDTO buildMeetingDTO(String name) {
+        MeetingDTO m = new MeetingDTO();
+        m.setName(name);
+        return m;
     }
 
     private StoryDTO buildStoryDTO(String su, 
