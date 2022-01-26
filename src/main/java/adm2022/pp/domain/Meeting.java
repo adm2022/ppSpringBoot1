@@ -1,13 +1,13 @@
 package adm2022.pp.domain;
 
+import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,8 +35,10 @@ public class Meeting {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "meeting_stories_id")
-    private Story meetingStories;
+    @Column(nullable = false)
+    private Date dateCreation;
+
+    @OneToMany(mappedBy = "meetingStorys")
+    private Set<Story> meetingStorysStorys;
 
 }
