@@ -1,10 +1,8 @@
 package adm2022.pp.service;
 
 import adm2022.pp.domain.Meeting;
-import adm2022.pp.domain.Story;
 import adm2022.pp.model.MeetingDTO;
 import adm2022.pp.repos.MeetingRepository;
-import adm2022.pp.repos.StoryRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
@@ -16,12 +14,9 @@ import org.springframework.web.server.ResponseStatusException;
 public class MeetingService {
 
     private final MeetingRepository meetingRepository;
-    private final StoryRepository storyRepository;
 
-    public MeetingService(final MeetingRepository meetingRepository,
-            final StoryRepository storyRepository) {
+    public MeetingService(final MeetingRepository meetingRepository) {
         this.meetingRepository = meetingRepository;
-        this.storyRepository = storyRepository;
     }
 
     public List<MeetingDTO> findAll() {
@@ -57,17 +52,13 @@ public class MeetingService {
     private MeetingDTO mapToDTO(final Meeting meeting, final MeetingDTO meetingDTO) {
         meetingDTO.setId(meeting.getId());
         meetingDTO.setName(meeting.getName());
-        meetingDTO.setMeetingStories(meeting.getMeetingStories() == null ? null : meeting.getMeetingStories().getId());
+        meetingDTO.setDateCreation(meeting.getDateCreation());
         return meetingDTO;
     }
 
     private Meeting mapToEntity(final MeetingDTO meetingDTO, final Meeting meeting) {
         meeting.setName(meetingDTO.getName());
-        if (meetingDTO.getMeetingStories() != null && (meeting.getMeetingStories() == null || !meeting.getMeetingStories().getId().equals(meetingDTO.getMeetingStories()))) {
-            final Story meetingStories = storyRepository.findById(meetingDTO.getMeetingStories())
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "meetingStories not found"));
-            meeting.setMeetingStories(meetingStories);
-        }
+        meeting.setDateCreation(meetingDTO.getDateCreation());
         return meeting;
     }
 
